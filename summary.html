@@ -24,7 +24,7 @@
             </div>
             <div class="container">
                 <div class="welcome">
-                    <p>Summary</p>
+                    <p>Registration Details</p>
                 </div>
             </div>
             <div class="container label" style="font-style: italic;">
@@ -34,16 +34,16 @@
                 <div class="row">
                     <div class="col">
                         <div class="summary-item">
-                            <p><strong>Name:</strong> {{ userData.name }}</p>
+                            <p><strong>Name:</strong> {{ name }}</p>
                         </div>
                         <div class="summary-item">
-                            <p><strong>Birthday:</strong> {{ userData.birthday }}</p>
+                            <p><strong>Birthday:</strong> {{ birthday }}</p>
                         </div>
                         <div class="summary-item">
-                            <p><strong>Email:</strong> {{ userData.email }}</p>
+                            <p><strong>Email:</strong> {{ email }}</p>
                         </div>
                         <div class="summary-item">
-                            <p><strong>Phone:</strong> {{ userData.phone }}</p>
+                            <p><strong>Phone:</strong> {{ phone }}</p>
                         </div>
                     </div>
                 </div>
@@ -59,21 +59,16 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
     <script>
         const app = Vue.createApp({
             data() {
                 return {
-                    userData: {},
+                name: localStorage.getItem("name") || "",
+                birthday: localStorage.getItem("birthday") || "",
+                email: localStorage.getItem("email") || "",
+                phone: localStorage.getItem("userData") || ""
                 };
-            },
-            mounted() {
-                // Retrieve the user data from localStorage
-                const registrationData = localStorage.getItem('registrationData');
-                
-                if (registrationData) {
-                    this.userData = JSON.parse(registrationData);
-                }
             },
         });
 
